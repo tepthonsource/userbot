@@ -26,7 +26,7 @@ plugin_category = "utils"
 
 
 @catub.cat_cmd(
-    pattern="alive$",
+    pattern="فحص$",
     command=("alive", plugin_category),
     info={
         "header": "To check bot's alive status",
@@ -51,7 +51,7 @@ async def amireallyalive(event):
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     EMOJI = gvarstatus("ALIVE_EMOJI") or "  ✥ "
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**✮ MY BOT IS RUNNING SUCCESSFULLY ✮**"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**✥ : سورس تيبثون العربي يعمل بجاح**"
     CAT_IMG = gvarstatus("ALIVE_PIC")
     caption = cat_caption.format(
         ALIVE_TEXT=ALIVE_TEXT,
@@ -86,26 +86,26 @@ async def amireallyalive(event):
 
 
 temp = """{ALIVE_TEXT}
-**{EMOJI} Database :** `{dbhealth}`
-**{EMOJI} Telethon Version :** `{telever}`
-**{EMOJI} Catuserbot Version :** `{catver}`
-**{EMOJI} Python Version :** `{pyver}`
-**{EMOJI} Uptime :** `{uptime}`
-**{EMOJI} Master:** {mention}"""
+**{EMOJI} قاعدة البيانات :** `{dbhealth}`
+**{EMOJI} اصدار تليثون :** `{telever}`
+**{EMOJI} اصدار تيبثون :** `{catver}`
+**{EMOJI} اصدار بايثون :** `{pyver}`
+**{EMOJI} مدة التشغيل :** `{uptime}`
+**{EMOJI} المالك:** {mention}"""
 
 
 def catalive_text():
     EMOJI = gvarstatus("ALIVE_EMOJI") or "  ✥ "
-    cat_caption = "**Catuserbot is Up and Running**\n"
-    cat_caption += f"**{EMOJI} Telethon version :** `{version.__version__}\n`"
-    cat_caption += f"**{EMOJI} Catuserbot Version :** `{catversion}`\n"
-    cat_caption += f"**{EMOJI} Python Version :** `{python_version()}\n`"
-    cat_caption += f"**{EMOJI} Master:** {mention}\n"
+    cat_caption = "**تيبثون العربي يعمل الان**\n"
+    cat_caption += f"**{EMOJI} اصدار تليثون :** `{version.__version__}\n`"
+    cat_caption += f"**{EMOJI} اصدار تيبثون :** `{catversion}`\n"
+    cat_caption += f"**{EMOJI} اصدار بايثون :** `{python_version()}\n`"
+    cat_caption += f"**{EMOJI} المالك:** {mention}\n"
     return cat_caption
 
 
 @catub.cat_cmd(
-    pattern="ialive$",
+    pattern="اضف صورة فحص$",
     command=("ialive", plugin_category),
     info={
         "header": "To check bot's alive status via inline mode",
@@ -116,7 +116,7 @@ def catalive_text():
     },
 )
 async def amireallyalive(event):
-    "A kind of showing bot details by your inline bot"
+    "نوع من إظهار تفاصيل البوت بواسطة البوت المضمن الخاص بك"
     reply_to_id = await reply_id(event)
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, "ialive")
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
