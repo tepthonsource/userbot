@@ -1,4 +1,4 @@
-FROM sandy1709/catuserbot:slim-buster
+FROM tepthnonsource/thetepthon:slim-buster
 
 #clonning repo 
 RUN git clone https://github.com/tepthonsource/thetepthon /root/userbot
