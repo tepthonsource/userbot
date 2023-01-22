@@ -27,9 +27,9 @@ LOGS = logging.getLogger("CatUBStartUP")
 cmdhr = Config.COMMAND_HAND_LER
 
 if ENV:
-    VPS_NOLOAD = ["vps"]
+    VPS_NOLOAD = ["سيرفر"]
 elif os.path.exists("config.py"):
-    VPS_NOLOAD = ["heroku"]
+    VPS_NOLOAD = ["هيروكو"]
 
 
 async def setup_bot():
@@ -69,9 +69,9 @@ async def startupmessage():
         if BOTLOG:
             Config.CATUBLOGO = await catub.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://graph.org/file/4e3ba8e8f7e535d5a2abe.jpg",
-                caption="**Your CatUserbot has been started successfully.**",
-                buttons=[(Button.url("Support", "https://t.me/catuserbot"),)],
+                "https://graph.org/file/fdcebf7ecadb329cdccdb.jpg",
+                caption="**سورس تيبثون العربي يعمل بنجاح ✔**",
+                buttons=[(Button.url("مجموعة المساعدة", "https://t.me/Tepthon_Help"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -87,7 +87,7 @@ async def startupmessage():
         if msg_details:
             await catub.check_testcases()
             message = await catub.get_messages(msg_details[0], ids=msg_details[1])
-            text = message.text + "\n\n**Ok Bot is Back and Alive.**"
+            text = message.text + "\n\n**لقد عاد البوت للعمل : ✤.**"
             await catub.edit_message(msg_details[0], msg_details[1], text)
             if gvarstatus("restartupdate") is not None:
                 await catub.send_message(
@@ -218,13 +218,13 @@ async def verifyLoggerGroup():
                 + str(e)
             )
     else:
-        descript = "Don't delete this group or change to group(If you change group all your previous snips, welcome will be lost.)"
+        descript = "✤ : مجموعة التخزين الخاصة بسورس تيبثون العربي لا تقم بحذفها ابدًا)"
         _, groupid = await create_supergroup(
-            "CatUserbot BotLog Group", catub, Config.TG_BOT_USERNAME, descript
+            "مجموعة التخزين", catub, Config.TG_BOT_USERNAME, descript
         )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
         print(
-            "Private Group for PRIVATE_GROUP_BOT_API_ID is created successfully and added to vars."
+            "تم إنشاء الكروب PRIVATE_GROUP_BOT_API_ID وتم إضافته إلى الفارات : ✤."
         )
         flag = True
     if PM_LOGGER_GROUP_ID != -100:
@@ -282,3 +282,4 @@ async def install_externalrepo(repo, branch, cfolder):
     if os.path.exists(rpath):
         await runcmd(f"pip3 install --no-cache-dir -r {rpath}")
     await load_plugins(folder="userbot", extfolder=cfolder)
+#كتابة وتعريب محمد تيبثون (حمد) 
