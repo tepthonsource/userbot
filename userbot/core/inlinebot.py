@@ -38,7 +38,7 @@ tr = Config.COMMAND_HAND_LER
 
 
 def get_thumb(name):
-    url = f"https://github.com/tepthonsource/thetepthon-Resources/blob/master/Resources/Inline/{name}?raw=true"
+    url = f"https://github.com/TgCatUB/CatUserbot-Resources/blob/master/Resources/Inline/{name}?raw=true"
     return types.InputWebDocument(url=url, size=0, mime_type="image/png", attributes=[])
 
 
@@ -115,9 +115,9 @@ description = "لجعل تيبثون العربي من نصيبك نصبه ال�
         title = "الملفات"
         description = f"Inline file manager\nSyntax: ls (path optional)\nPath:  {path}"
         thumb = get_thumb("filemanager.jpg")
-        media = "https://github.com/tepthonsource/thetepthon-Resources/raw/master/Resources/Inline/filemanager.jpg"
+        media = "https://github.com/TgCatUB/CatUserbot-Resources/raw/master/Resources/Inline/filemanager.jpg"
     elif method == "deploy":
-        media = "https://github.com/tepthonsource/thetepthon-Resources/raw/master/Resources/Inline/catlogo.png"
+        media = ""https://graph.org/file/fdcebf7ecadb329cdccdb.jpg"
         title = "تيبثون العربي"
         description = "نصب بنفسك."
         query = "نصب تيبثون العربي من @Tepthon."
@@ -170,7 +170,7 @@ description = "لجعل تيبثون العربي من نصيبك نصبه ال�
 
             title = "Spotify"
             description = "اصوات جميلة على سبوفتاي."
-            media = "https://github.com/tepthonsource/thetepthon-Resources/raw/master/Resources/Inline/spotify_off.png"
+            media = "https://github.com/TgCatUB/CatUserbot-Resources/raw/master/Resources/Inline/spotify_off.png"
             if (
                 not (Config.SPOTIFY_CLIENT_ID and Config.SPOTIFY_CLIENT_SECRET)
                 or SP_DATABASE is None
