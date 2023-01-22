@@ -1,7 +1,7 @@
-FROM tepthnonsource/thetepthon:slim-buster
+FROM tepthnonsource/userbot:slim-buster
 
 #clonning repo 
-RUN git clone https://github.com/tepthonsource/thetepthon /root/userbot
+RUN git clone https://github.com/tepthonsource/userbot /root/userbot
 #working directory 
 WORKDIR /root/userbot
 
