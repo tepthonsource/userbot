@@ -38,7 +38,7 @@ tr = Config.COMMAND_HAND_LER
 
 
 def get_thumb(name):
-    url = f"https://github.com/TgCatUB/CatUserbot-Resources/blob/master/Resources/Inline/{name}?raw=true"
+    url = f"https://github.com/tepthonsource/thetepthon-Resources/blob/master/Resources/Inline/{name}?raw=true"
     return types.InputWebDocument(url=url, size=0, mime_type="image/png", attributes=[])
 
 
@@ -53,36 +53,36 @@ def ibuild_keyboard(buttons):
 
 
 def main_menu():
-    text = f"𝗖𝗮𝘁𝗨𝘀𝗲𝗿𝗯𝗼𝘁 𝗛𝗲𝗹𝗽𝗲𝗿\
-        \n𝗣𝗿𝗼𝘃𝗶𝗱𝗲𝗱 𝗯𝘆 {mention}"
+    text = f"مساعدة تيبثون\
+        \nالمطور {mention}"
     buttons = [
         (Button.inline("ℹ️ Info", data="check"),),
         (
-            Button.inline(f"👮‍♂️ Admin ({len(GRP_INFO['admin'])})", data="admin_menu"),
-            Button.inline(f"🤖 Bot ({len(GRP_INFO['bot'])})", data="bot_menu"),
+            Button.inline(f"👮‍♂️ الادمن ({len(GRP_INFO['admin'])})", data="admin_menu"),
+            Button.inline(f"🤖 البوت ({len(GRP_INFO['bot'])})", data="bot_menu"),
         ),
         (
-            Button.inline(f"🎨 Fun ({len(GRP_INFO['fun'])})", data="fun_menu"),
-            Button.inline(f"🧩 Misc ({len(GRP_INFO['misc'])})", data="misc_menu"),
+            Button.inline(f"🎨 الفن ({len(GRP_INFO['fun'])})", data="fun_menu"),
+            Button.inline(f"🧩 الميوزك ({len(GRP_INFO['misc'])})", data="misc_menu"),
         ),
         (
-            Button.inline(f"🧰 Tools ({len(GRP_INFO['tools'])})", data="tools_menu"),
-            Button.inline(f"🗂 Utils ({len(GRP_INFO['utils'])})", data="utils_menu"),
+            Button.inline(f"🧰 الأدوات ({len(GRP_INFO['tools'])})", data="tools_menu"),
+            Button.inline(f"🗂 المرافق ({len(GRP_INFO['utils'])})", data="utils_menu"),
         ),
         (
-            Button.inline(f"➕ Extra ({len(GRP_INFO['extra'])})", data="extra_menu"),
-            Button.inline("🔒 Close Menu", data="close"),
+            Button.inline(f"➕ اكسترا ({len(GRP_INFO['extra'])})", data="extra_menu"),
+            Button.inline("🔒 إغلاق القائمة", data="close"),
         ),
     ]
     if Config.BADCAT:
         switch_button = [
             (
-                Button.inline(f"➕ Extra ({len(GRP_INFO['extra'])})", data="extra_menu"),
+                Button.inline(f"➕ اكسترا ({len(GRP_INFO['extra'])})", data="extra_menu"),
                 Button.inline(
-                    f"⚰️ Useless ({len(GRP_INFO['useless'])})", data="useless_menu"
+                    f"⚰️عديمه الفائده  ({len(GRP_INFO['useless'])})", data="useless_menu"
                 ),
             ),
-            (Button.inline("🔒 Close Menu", data="close"),),
+            (Button.inline("🔒 اغلاق القائمة", data="close"),),
         ]
         buttons = buttons[:-1] + switch_button
 
@@ -93,12 +93,12 @@ async def article_builder(event, method):
     media = thumb = photo = None
     link_preview = False
     builder = event.builder
-    title = "Cat Userbot"
-    description = "Button menu for CatUserbot"
+    title = "تيبثون العربي"
+description = "لجعل تيبثون العربي من نصيبك نصبه الآن!"
     if method == "help":
         help_info = main_menu()
-        title = "Help Menu"
-        description = "Help menu for CatUserbot."
+        title = "قائمة السماعدة"
+        description = "قائمة المساعدة الخاصة بسورس تيبثون العربي."
         thumb = get_thumb("help.png")
         query = help_info[0]
         buttons = help_info[1]
@@ -112,25 +112,25 @@ async def article_builder(event, method):
             return
         num = 1
         query, buttons = get_manager(path, num)
-        title = "File Manager"
+        title = "الملفات"
         description = f"Inline file manager\nSyntax: ls (path optional)\nPath:  {path}"
         thumb = get_thumb("filemanager.jpg")
-        media = "https://github.com/TgCatUB/CatUserbot-Resources/raw/master/Resources/Inline/filemanager.jpg"
+        media = "https://github.com/tepthonsource/thetepthon-Resources/raw/master/Resources/Inline/filemanager.jpg"
     elif method == "deploy":
-        media = "https://github.com/TgCatUB/CatUserbot-Resources/raw/master/Resources/Inline/catlogo.png"
-        title = "𝘾𝙖𝙩𝙐𝙨𝙚𝙧𝙗𝙤𝙩"
-        description = "Deploy yourself."
-        query = "𝗗𝗲𝗽𝗹𝗼𝘆 𝘆𝗼𝘂𝗿 𝗼𝘄𝗻 𝗖𝗮𝘁𝗨𝘀𝗲𝗿𝗯𝗼𝘁."
+        media = "https://github.com/tepthonsource/thetepthon-Resources/raw/master/Resources/Inline/catlogo.png"
+        title = "تيبثون العربي"
+        description = "نصب بنفسك."
+        query = "نصب تيبثون العربي من @Tepthon."
         buttons = [
             (
-                Button.url("Source code", "https://github.com/TgCatUB/catuserbot"),
-                Button.url("Deploy", "https://github.com/TgCatUB/nekopack"),
+                Button.url("قناة السورس", "t.me/Tepthon"),
+                Button.url("لتنصيب", "t.me/Tepthon"),
             )
         ]
 
     elif method == "pmpermit":
         query = gvarstatus("pmpermit_text")
-        buttons = [Button.inline(text="Show Options.", data="show_pmpermit_options")]
+        buttons = [Button.inline(text="إظهار الخيارات.", data="show_pmpermit_options")]
         PM_PIC = gvarstatus("pmpermit_pic")
         if PM_PIC:
             CAT = [x for x in PM_PIC.split()]
@@ -140,8 +140,8 @@ async def article_builder(event, method):
     elif method == "ialive":
         buttons = [
             (
-                Button.inline("Stats", data="stats"),
-                Button.url("Repo", "https://github.com/TgCatUB/catuserbot"),
+                Button.inline("احصائيات", data="stats"),
+                Button.url("قناة السورس", "t.me/Tepthon"),
             )
         ]
         try:
@@ -150,9 +150,9 @@ async def article_builder(event, method):
             query = catalive_text()
         except Exception:
             return None
-        title = "Cat Alive"
+        title = "فحص تيبثون"
         thumb = get_thumb("alive.png")
-        description = "Alive menu for CatUserbot."
+        description = "قائمة الانلاين الخاصة بسورس تيبثون العربي."
         ALIVE_PIC = gvarstatus("ALIVE_PIC")
         IALIVE_PIC = gvarstatus("IALIVE_PIC")
         if IALIVE_PIC:
@@ -169,8 +169,8 @@ async def article_builder(event, method):
             from userbot.plugins.spotify import SP_DATABASE, get_spotify, sp_data
 
             title = "Spotify"
-            description = "Get currently playing song."
-            media = "https://github.com/TgCatUB/CatUserbot-Resources/raw/master/Resources/Inline/spotify_off.png"
+            description = "اصوات جميلة على سبوفتاي."
+            media = "https://github.com/tepthonsource/thetepthon-Resources/raw/master/Resources/Inline/spotify_off.png"
             if (
                 not (Config.SPOTIFY_CLIENT_ID and Config.SPOTIFY_CLIENT_SECRET)
                 or SP_DATABASE is None
@@ -178,8 +178,8 @@ async def article_builder(event, method):
                 query = "__Spotify is not setup properly. \nDo `.help spsetup` and follow the tutorial.__"
                 buttons = [
                     Button.url(
-                        "Tutorial",
-                        "https://graph.org/Steps-of-setting-Spotify-Vars-in-Catuserbot-04-24-2",
+                        "الشرح",
+                        "t.me/tepthon",
                     )
                 ]
             else:
@@ -188,16 +188,16 @@ async def article_builder(event, method):
                 )
                 if response.status_code == 204:
                     query = "__Currently not listening to any music on spotify...__"
-                    buttons = [Button.url("Open Spotify", "https://open.spotify.com/")]
+                    buttons = [Button.url("فتح سبوفتاي", "https://open.spotify.com/")]
                 else:
                     media, tittle, dic, lyrics, symbol = await get_spotify(
                         event, response
                     )
                     thumb = get_thumb("spotify_on.png")
-                    query = f'**🎶 Track :- ** `{tittle}`\n**🎤 Artist :- ** `{dic["interpret"]}`'
+                    query = f'**🎶 المسار :- ** `{tittle}`\n**🎤 الفنان :- ** `{dic["interpret"]}`'
                     buttons = [
                         (
-                            Button.url("🎧 Spotify", dic["link"]),
+                            Button.url("🎧 سبوفتاي", dic["link"]),
                             Button.url(f"{symbol} Lyrics", lyrics),
                         )
                     ]
@@ -349,12 +349,12 @@ def paginate_help(
             ] + [
                 (
                     Button.inline("⌫", data=f"{prefix}_prev({modulo_page})_plugin"),
-                    Button.inline("⚙️ Main Menu", data="mainmenu"),
+                    Button.inline("⚙️القائمة الرئيسية", data="mainmenu"),
                     Button.inline("⌦", data=f"{prefix}_next({modulo_page})_plugin"),
                 )
             ]
         else:
-            pairs = pairs + [(Button.inline("⚙️ Main Menu", data="mainmenu"),)]
+            pairs = pairs + [(Button.inline("⚙️ القائمة الرئيسية", data="mainmenu"),)]
     elif len(pairs) > number_of_rows:
         if category_pgno < 0:
             category_pgno = len(pairs) + category_pgno
@@ -367,7 +367,7 @@ def paginate_help(
                     data=f"{prefix}_prev({modulo_page})_command_{category_plugins}_{category_pgno}",
                 ),
                 Button.inline(
-                    "⬅️ Back ",
+                    "⬅️ رجوع ",
                     data=f"back_plugin_{category_plugins}_{category_pgno}",
                 ),
                 Button.inline(
@@ -382,7 +382,7 @@ def paginate_help(
         pairs = pairs + [
             (
                 Button.inline(
-                    "⬅️ Back ",
+                    "⬅️ رجوع ",
                     data=f"back_plugin_{category_plugins}_{category_pgno}",
                 ),
             )
@@ -426,10 +426,10 @@ async def inline_handler(event):  # sourcery no-metrics
                 sandy = ""
                 if match:
                     query = query[6:]
-                    info_type = ["troll", "can't", "show message 🔐"]
+                    info_type = ["troll", "لا يمكنك", "مشاهدة الرسالة 🔐"]
                 elif match2:
                     query = query[7:]
-                    info_type = ["secret", "can", "show message 🔐"]
+                    info_type = ["secret", "يمكنك", "مشاهدة الرسالة🔐"]
                 if "|" in query:
                     iris, query = query.replace(" |", "|").replace("| ", "|").split("|")
                     users = iris.split(" ")
@@ -463,13 +463,13 @@ async def inline_handler(event):  # sourcery no-metrics
             buttons = [Button.inline(info_type[2], data=f"{info_type[0]}_{timestamp}")]
             result = builder.article(
                 title=f"{info_type[0].title()} message  to {sandy}.",
-                description="Send hidden text in chat."
+                description="إرسال همسه في الدردشة ."
                 if match3
                 else f"Only he/she/they {info_type[1]} open it.",
                 thumb=get_thumb(f"{info_type[0]}.png"),
                 text="✖✖✖"
                 if match3
-                else f"🔒 A whisper message to {sandy}, Only he/she can open it.",
+                else f"🔒  رسالة همس إلى{sandy}, فقط هو / هي يمكنه فتحه.",
                 buttons=buttons,
             )
             await event.answer([result] if result else None)
@@ -505,11 +505,11 @@ async def inline_handler(event):  # sourcery no-metrics
                             data=f"ytdl_next_{key_}_1",
                         ),
                         Button.inline(
-                            "📜  List all",
+                            "📜  قائمة الجميع",
                             data=f"ytdl_listall_{key_}_1",
                         ),
                         Button.inline(
-                            "⬇️  Download",
+                            "⬇️  تحميل",
                             data=f'ytdl_download_{outdata[1]["video_id"]}_0',
                         ),
                     ]
@@ -530,7 +530,7 @@ async def inline_handler(event):  # sourcery no-metrics
                     id=str(uuid4()),
                     type="photo",
                     title=link,
-                    description="⬇️ Click to Download",
+                    description="⬇️ للتنزيل من هنا",
                     thumb=photo,
                     content=photo,
                     send_message=types.InputBotInlineMessageMediaAuto(
