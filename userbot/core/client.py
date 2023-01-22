@@ -106,11 +106,11 @@ class CatUserBotClient(TelegramClient):
                 # sourcery skip: low-code-quality
                 if groups_only and not check.is_group:
                     return await edit_delete(
-                        check, "`I don't think this is a group.`", 10
+                        check, "`لا اعتقد انةهذه مجموعه.`", 10
                     )
                 if private_only and not check.is_private:
                     return await edit_delete(
-                        check, "`I don't think this is a personal Chat.`", 10
+                        check, "`لا أعتقد أن هذه دردشة شخصية.`", 10
                     )
                 try:
                     await func(check)
@@ -119,25 +119,25 @@ class CatUserBotClient(TelegramClient):
                 except KeyboardInterrupt:
                     pass
                 except MessageNotModifiedError:
-                    LOGS.error("Message was same as previous message")
+                    LOGS.error("كانت الرسالة هي نفسها الرسالة السابقة")
                 except MessageIdInvalidError:
-                    LOGS.error("Message was deleted or cant be found")
+                    LOGS.error("تم حذف الرسالة أو لا يمكن العثور عليها")
                 except BotInlineDisabledError:
-                    await edit_delete(check, "`Turn on Inline mode for our bot`", 10)
+                    await edit_delete(check, "قم بتشغيل الوضع المضمن للبوت الخاص بنا``", 10)
                 except ChatSendStickersForbiddenError:
                     await edit_delete(
-                        check, "`I guess i can't send stickers in this chat`", 10
+                        check, "`أعتقد أنه لا يمكنني إرسال ملصقات في هذه الدردشة`", 10
                     )
                 except BotResponseTimeoutError:
                     await edit_delete(
-                        check, "`The bot didnt answer to your query in time`", 10
+                        check, "`لم يرد الروبوت على استفسارك في الوقت المناسب`", 10
                     )
                 except ChatSendMediaForbiddenError:
-                    await edit_delete(check, "`You can't send media in this chat`", 10)
+                    await edit_delete(check, "`لا يمكنك إرسال الوسائط في هذه الدردشة`", 10)
                 except AlreadyInConversationError:
                     await edit_delete(
                         check,
-                        "`A conversation is already happening with the given chat. try again after some time.`",
+                        "`محادثة تحدث بالفعل مع الدردشة المحددة. حاول مرة أخرى بعد مرور بعض الوقت.`",
                         10,
                     )
                 except ChatSendInlineForbiddenError:
@@ -156,22 +156,22 @@ class CatUserBotClient(TelegramClient):
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
                         date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
-                        ftext = f"\nDisclaimer:\nThis file is pasted only here ONLY here,\
-                                  \nwe logged only fact of error and date,\nwe respect your privacy,\
-                                  \nyou may not report this error if you've\
-                                  \nany confidential data here, no one will see your data\
-                                  \n\n--------BEGIN USERBOT TRACEBACK LOG--------\
-                                  \nDate: {date}\nGroup ID: {str(check.chat_id)}\
-                                  \nSender ID: {str(check.sender_id)}\
-                                  \nMessage Link: {await check.client.get_msg_link(check)}\
-                                  \n\nEvent Trigger:\n{str(check.text)}\
-                                  \n\nTraceback info:\n{str(traceback.format_exc())}\
-                                  \n\nError text:\n{str(sys.exc_info()[1])}"
+                        ftext = f"\nاخلاء المسؤوليه:\nيتم لصق هذا الملف هنا فقط هنا فقط,\
+                                  \nلقد سجلنا فقط حقيقة الخطأ والتاريخ,\nنحن نحترم خصوصيتك,\
+                                  \nلا يجوز لك الإبلاغ عن هذا الخطأ إذا كان لديك\
+                                  \nأي بيانات سرية هنا ، لن يرى أحد بياناتك\
+                                  \n\n--------خطأ سورس تيبثون--------\
+                                  \nتاريخ: {date}\nGroup ID: {str(check.chat_id)}\
+                                  \nايدي المرسل: {str(check.sender_id)}\
+                                  \nرابط السرالة: {await check.client.get_msg_link(check)}\
+                                  \n\nمكان الحدث:\n{str(check.text)}\
+                                  \n\nمعلومات التتبع:\n{str(traceback.format_exc())}\
+                                  \n\nخطأ بالنص:\n{str(sys.exc_info()[1])}"
                         new = {
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+                        ftext += "\n\n--------تصدم تيبثون النهائي--------"
                         ftext += "\n\n\nLast 5 commits:\n"
                         command = 'git log --pretty=format:"%an: %s" -5'
                         output = (await runcmd(command))[:2]
@@ -180,16 +180,16 @@ class CatUserBotClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        link = "[here](https://t.me/catuserbot_support)"
+                        link = "[هنا](https://t.me/Tepthon_Help)"
                         text = (
-                            "**CatUserbot Error report**\n\n"
-                            + "If you wanna you can report it"
+                            "**عليك التبليغ عن هذا الخطأ في مجموعه الدعم**\n\n"
+                            + "وسوف يحلوا الخطأ بأسرع وقت ممكن"
                         )
-                        text += f"- just forward this message {link}.\n"
+                        text += f"- فقط أعد توجيه هذه الرسالة {link}.\n"
                         text += (
-                            "Nothing is logged except the fact of error and date\n\n"
+                            "لا يتم تسجيل أي شيء باستثناء حقيقة الخطأ والتاريخ\n\n"
                         )
-                        text += f"**Error report : ** [{new['error']}]({pastelink})"
+                        text += f"**خطأ ابلغ عنه : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
@@ -292,7 +292,7 @@ class CatUserBotClient(TelegramClient):
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+                        ftext += "\n\n--------اصتدام تيبثون النهائي--------"
                         command = 'git log --pretty=format:"%an: %s" -5'
                         ftext += "\n\n\nLast 5 commits:\n"
                         output = (await runcmd(command))[:2]
@@ -301,16 +301,16 @@ class CatUserBotClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        link = "[here](https://t.me/catuserbot_support)"
+                        link = "[هنا](https://t.me/Tepthon_Help)"
                         text = (
-                            "**CatUserbot Error report**\n\n"
-                            + "If you wanna you can report it"
+                            "**خطأ ابلغ عنه**\n\n"
+                            + "ابلغ عنه في كروب الدعم"
                         )
-                        text += f"- just forward this message {link}.\n"
+                        text += f"- اعد توجيه الرساله {link}.\n"
                         text += (
-                            "Nothing is logged except the fact of error and date\n\n"
+                            "لا يتم تسجيل أي شيء باستثناء حقيقة الخطأ والتاريخ\n\n"
                         )
-                        text += f"**Error report : ** [{new['error']}]({pastelink})"
+                        text += f"**خطأ ابلغ عنه : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
