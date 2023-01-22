@@ -107,18 +107,18 @@ async def bot_start(event):  # sourcery skip: low-code-quality
             start_msg = f"اهلًا! 👤{mention},\
                         \nانا {my_mention}البوت المساعد الخاص ب.\
                         \nتستطيع التواصل مع مالكي من هنا.\
-                        \n\nسورس تيبثون [تيبثون](https://t.me/Tepthone)"
+                        \n\nسورس تيبثون [تيبثون](https://t.me/Tepthon)"
         buttons = [
             (
                 Button.url("كروب الدعم", "https://t.me/Tepthon_Help"),
                 Button.url(
                     "للتنصيب اتبع الخطوات الموجودة في القناة",
-                    "https://t.me/Tepthone",
+                    "https://t.me/Tepthon",
                 ),
             )
         ]
     else:
-        start_msg = "اهلًا سيدي!\
+        start_msg = "اهلًا مطوري!\
             \nهل تريد مساعدة ?"
         buttons = None
     try:
